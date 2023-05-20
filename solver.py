@@ -1,6 +1,23 @@
+def valid(board:list, x:int, y:int) -> bool:
 
 
-def print_board(board):
+    #checks rows
+    for i in range(len(board)):
+        if board[i][y] == board[x][y] and x!=i:
+            print(i,y)
+            return False
+
+    #checks columns
+    for i in range(len(board)):
+        if board[x][i] == board[x][y] and y!=i:
+            return False
+    
+    #need to check 3x3 box now
+
+    return True
+            
+
+def print_board(board:list) -> None:
     for i in range(len(board)):
         for j in range(len(board[i])):
             print(board[i][j], end=' ')
@@ -19,7 +36,13 @@ board = [
     [7,0,3,0,1,8,0,0,0]
 ]
 
-print_board(board)
+# print_board(board)
+if valid(board,0,8):
+    print("!!!!!!!!!VALID!!!!!!!!!")
+else:
+    print("-----INVALID-----")
+
+
 
 # print(len(board)) Rows
 # print(len(board[0])) Columns
