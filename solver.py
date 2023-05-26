@@ -1,6 +1,5 @@
 def valid(board:list, x:int, y:int) -> bool:
-
-
+    
     #checks rows
     for i in range(len(board)):
         if board[i][y] == board[x][y] and x!=i:
