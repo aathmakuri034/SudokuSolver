@@ -1,3 +1,22 @@
+def solve(board):
+    space = emptySpace(board)
+
+    #logic for if there is an empty space or not
+    if space:
+        x,y = space
+    else:
+        return True
+    
+    for i in range(1,10):
+        if valid(board,x,y,i):
+            board[x][y] = i
+
+            if solve(board):
+                return True
+            
+            board[x][y] = 0
+    
+    return False
 
 
 def emptySpace(board):
@@ -8,17 +27,18 @@ def emptySpace(board):
     
     return None
 
-def valid(board:list, x:int, y:int) -> bool:
+
+def valid(board:list, x:int, y:int, target) -> bool:
     
     #checks rows
     for i in range(len(board)):
-        if board[i][y] == board[x][y] and x!=i:
+        if board[i][y] == target and x!=i:
             print(i,y)
             return False
 
     #checks columns
     for i in range(len(board)):
-        if board[x][i] == board[x][y] and y!=i:
+        if board[x][i] == target and y!=i:
             return False
     
     #need to check 3x3 box now
@@ -27,7 +47,7 @@ def valid(board:list, x:int, y:int) -> bool:
 
     for i in range(bo_x_len*3, bo_x_len*3 + 3):
         for j in range(bo_y_len*3, bo_y_len*3 + 3):
-            if board[i][j] == board[x][y] and i!=x and j!=y:
+            if board[i][j] == target and i!=x and j!=y:
                 return False
 
     return True
@@ -52,11 +72,12 @@ board = [
     [7,0,3,0,1,8,0,0,0]
 ]
 
+
 # print_board(board)
-if valid(board,0,8):
-    print("!!!!!!!!!VALID!!!!!!!!!")
-else:
-    print("-----INVALID-----")
+# if valid(board,0,8):
+#     print("!!!!!!!!!VALID!!!!!!!!!")
+# else:
+#     print("-----INVALID-----")
 
 
 
