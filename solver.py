@@ -33,7 +33,6 @@ def valid(board:list, x:int, y:int, target) -> bool:
     #checks rows
     for i in range(len(board)):
         if board[i][y] == target and x!=i:
-            print(i,y)
             return False
 
     #checks columns
@@ -72,14 +71,6 @@ board = [
     [7,0,3,0,1,8,0,0,0]
 ]
 
+if solve(board):
+    print_board(board)
 
-# print_board(board)
-# if valid(board,0,8):
-#     print("!!!!!!!!!VALID!!!!!!!!!")
-# else:
-#     print("-----INVALID-----")
-
-
-
-# print(len(board)) Rows
-# print(len(board[0])) Columns
