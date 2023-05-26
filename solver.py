@@ -1,3 +1,13 @@
+
+
+def emptySpace(board):
+    for i in range(len(board)):
+        for j in range(len(board)):
+            if board[i][j] == 0:
+                return (i,j)
+    
+    return None
+
 def valid(board:list, x:int, y:int) -> bool:
     
     #checks rows
