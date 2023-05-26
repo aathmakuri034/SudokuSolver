@@ -1,4 +1,9 @@
 def solve(board):
+    '''
+    Purpose: Solve the given sudoku board
+    Parameters: board(2d array of ints)
+    Return: bool if the board can be solved
+    '''
     space = emptySpace(board)
 
     #logic for if there is an empty space or not
@@ -20,6 +25,11 @@ def solve(board):
 
 
 def emptySpace(board):
+    '''
+    Purpose: spots open spaces in the board and returns position of the empty space
+    Parameter: board(2d array of ints)
+    Return: tuple if an empty position is found
+    '''
     for i in range(len(board)):
         for j in range(len(board)):
             if board[i][j] == 0:
@@ -29,7 +39,12 @@ def emptySpace(board):
 
 
 def valid(board:list, x:int, y:int, target) -> bool:
-    
+    '''
+    Purpose: Checks if a number placed in the empty spot is valid
+    Parameters: board(2d array of list), x(integer x coordinate), y(integer y coordinate), target(integer number being placed into empty spot)
+    Returns: bool value if the number is valid or not
+    '''
+
     #checks rows
     for i in range(len(board)):
         if board[i][y] == target and x!=i:
@@ -53,12 +68,17 @@ def valid(board:list, x:int, y:int, target) -> bool:
             
 
 def print_board(board:list) -> None:
+    '''
+    Purpose: prints the Sudoku board
+    Parameters: board(2d array of ints)
+    Returns: Nothing
+    '''
     for i in range(len(board)):
         for j in range(len(board[i])):
             print(board[i][j], end=' ')
         print()
         
-
+#Example boards used
 board = [
     [0,0,0,2,6,0,7,0,1],
     [6,8,0,0,7,0,0,9,0],
@@ -71,6 +91,19 @@ board = [
     [7,0,3,0,1,8,0,0,0]
 ]
 
-if solve(board):
-    print_board(board)
+board2 = [
+    [0,0,3,0,2,0,6,0,0],
+    [9,0,0,3,0,5,0,0,1],
+    [0,0,1,8,0,6,4,0,0],
+    [0,0,8,1,0,2,9,0,0],
+    [7,0,0,0,0,0,0,0,8],
+    [0,0,6,7,0,8,2,0,0],
+    [0,0,2,6,0,9,5,0,0],
+    [8,0,0,2,0,3,0,0,9],
+    [0,0,5,0,1,0,3,0,0]
+]
 
+if solve(board2):
+    print_board(board2)
+else:
+    print("Board cannot be solved")
