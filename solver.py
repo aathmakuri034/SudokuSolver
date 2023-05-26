@@ -12,6 +12,13 @@ def valid(board:list, x:int, y:int) -> bool:
             return False
     
     #need to check 3x3 box now
+    bo_x_len = x//3
+    bo_y_len = y//3
+
+    for i in range(bo_x_len*3, bo_x_len*3 + 3):
+        for j in range(bo_y_len*3, bo_y_len*3 + 3):
+            if board[i][j] == board[x][y] and i!=x and j!=y:
+                return False
 
     return True
             
