@@ -45,14 +45,9 @@ def valid(board:list, x:int, y:int, target) -> bool:
     Returns: bool value if the number is valid or not
     '''
 
-    #checks rows
+    #checks rows and columns
     for i in range(len(board)):
-        if board[i][y] == target and x!=i:
-            return False
-
-    #checks columns
-    for i in range(len(board)):
-        if board[x][i] == target and y!=i:
+        if (board[i][y] == target and x!=i) or (board[x][i] == target and y!=i):
             return False
     
     #need to check 3x3 box now
